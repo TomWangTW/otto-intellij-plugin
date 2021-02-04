@@ -217,8 +217,4 @@ public class OttoLineMarkerProvider implements LineMarkerProvider {
       return subscribeMethodParam.getTypeElement();
     }
   }
-
-  @Override public void collectSlowLineMarkers(@NotNull List<PsiElement> psiElements,
-      @NotNull Collection<LineMarkerInfo> lineMarkerInfos) {
-  }
 }

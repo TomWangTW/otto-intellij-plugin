@@ -79,7 +79,7 @@ import com.intellij.ui.InplaceButton;
 import com.intellij.ui.ScreenUtil;
 import com.intellij.ui.SpeedSearchBase;
 import com.intellij.ui.SpeedSearchComparator;
-import com.intellij.ui.TableScrollingUtil;
+import com.intellij.ui.ScrollingUtil;
 import com.intellij.ui.TableUtil;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.ui.popup.AbstractPopup;
@@ -329,7 +329,7 @@ public class ShowUsagesAction extends AnAction implements PopupAction {
 
     addUsageNodes(usageView.getRoot(), usageView, new ArrayList<UsageNode>());
 
-    TableScrollingUtil.installActions(table);
+    ScrollingUtil.installActions(table);
 
     final List<UsageNode> data = collectData(usages, visibleNodes, usageView, presentation);
     setTableModel(table, usageView, data);
@@ -962,13 +962,13 @@ public class ShowUsagesAction extends AnAction implements PopupAction {
 
     int newSelection = updateModel(tableModel, existingData, data, row == -1 ? 0 : row);
     if (newSelection < 0 || newSelection >= tableModel.getRowCount()) {
-      TableScrollingUtil.ensureSelectionExists(table);
+      ScrollingUtil.ensureSelectionExists(table);
       newSelection = table.getSelectedRow();
     }
     else {
       table.getSelectionModel().setSelectionInterval(newSelection, newSelection);
     }
-    TableScrollingUtil.ensureIndexIsVisible(table, newSelection, 0);
+    ScrollingUtil.ensureIndexIsVisible(table, newSelection, 0);
 
     setSizeAndDimensions(table, popup, popupPosition, data);
   }
@@ -1017,7 +1017,7 @@ public class ShowUsagesAction extends AnAction implements PopupAction {
     }
 
     if (!data.isEmpty()) {
-      TableScrollingUtil.ensureSelectionExists(table);
+      ScrollingUtil.ensureSelectionExists(table);
     }
     table.setSize(dimension);
     //table.setPreferredSize(dimension);
